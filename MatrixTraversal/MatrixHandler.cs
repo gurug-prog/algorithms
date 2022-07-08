@@ -1,4 +1,6 @@
-﻿namespace MatrixTraversal;
+﻿using System.ComponentModel;
+
+namespace MatrixTraversal;
 
 internal class MatrixHandler
 {
@@ -70,6 +72,99 @@ internal class MatrixHandler
             }
         }
         Console.WriteLine();
+    }
+
+    public void TraverseZigzag(in string[,] matrix)
+    {
+        var resultStr = string.Empty;
+        var elementsPassed = 0;
+        var countElements = matrix.GetLength(0) * matrix.GetLength(1);
+        var i = 0;
+        var j = 0;
+        var state = ZigzagState.LeftRightDiag;
+        var prevState = ZigzagState.LeftRightDiag;
+        while (elementsPassed != countElements)
+        {
+            switch (state)
+            {
+                case ZigzagState.LeftRight:
+                    j++;
+                    if (prevState == ZigzagState.LeftRightDiag)
+                    {
+                        state = ZigzagState.RightLeftDiag;
+                    }
+                    else if (prevState == ZigzagState.RightLeftDiag)
+                    {
+                        state = ZigzagState.LeftRightDiag;
+                    }
+                    else
+                    {
+                        throw new InvalidEnumArgumentException();
+                    }
+                    prevState = ZigzagState.LeftRight;
+                    break;
+                case ZigzagState.TopDown:
+                    i++;
+                    if (prevState == ZigzagState.LeftRightDiag)
+                    {
+                        state = ZigzagState.RightLeftDiag;
+                    }
+                    else if (prevState == ZigzagState.RightLeftDiag)
+                    {
+                        state = ZigzagState.LeftRightDiag;
+                    }
+                    else
+                    {
+                        //
+                    }
+                    prevState = ZigzagState.TopDown;
+                    break;
+                case ZigzagState.RightLeftDiag:
+                    while (j != 0 && i + 1 < matrix.GetLength(0))
+                    {
+                        resultStr += $"{matrix[i, j]} ";
+                        elementsPassed++;
+                        i++;
+                        j--;
+                    }
+                    resultStr += $"{matrix[i, j]} ";
+                    elementsPassed++;
+                    if (i + 1 < matrix.GetLength(0))
+                    {
+                        state = ZigzagState.TopDown;
+                    }
+                    else
+                    {
+                        state = ZigzagState.LeftRight;
+                    }
+                    prevState = ZigzagState.RightLeftDiag;
+                    break;
+                case ZigzagState.LeftRightDiag:
+                    while (i != 0 && j + 1 < matrix.GetLength(1))
+                    {
+                        resultStr += $"{matrix[i, j]} ";
+                        elementsPassed++;
+                        j++;
+                        i--;
+                    }
+                    resultStr += $"{matrix[i, j]} ";
+                    elementsPassed++;
+                    if (j + 1 < matrix.GetLength(1))
+                    {
+                        state = ZigzagState.LeftRight;
+                    }
+                    else
+                    {
+                        state = ZigzagState.TopDown;
+                    }
+                    prevState = ZigzagState.LeftRightDiag;
+                    break;
+                default:
+                    throw new InvalidEnumArgumentException();
+            }
+        }
+
+        Console.WriteLine(resultStr);
     }
 
     public void PrintMatrix(in string[,] matrix)
