@@ -2,8 +2,8 @@
 
 internal enum ZigzagState
 {
-	LeftRight,
-	TopDown,
-	LeftRightDiag,
-	RightLeftDiag,
+    LeftRight,
+    TopDown,
+    LeftRightDiag,
+    RightLeftDiag,
 }
