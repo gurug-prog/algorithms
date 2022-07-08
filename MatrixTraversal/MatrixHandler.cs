@@ -49,6 +49,27 @@ internal class MatrixHandler
         }
     }
 
+    public void TraverseVerticalSnake(in string[,] matrix)
+    {
+        for (int j = 0; j < matrix.GetLength(1); j++)
+        {
+            if (j % 2 == 0)
+            {
+                for (int i = 0; i < matrix.GetLength(0); i++)
+                {
+                    Console.Write($"{matrix[i, j]} ");
+                }
+            }
+            else
+            {
+                for (int i = matrix.GetLength(0) - 1; i >= 0; i--)
+                {
+                    Console.Write($"{matrix[i, j]} ");
+                }
+            }
+        }
+    }
+
     public void PrintMatrix(in string[,] matrix)
     {
         for (int n = 0; n < matrix.GetLength(0); n++)
