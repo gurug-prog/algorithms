@@ -11,3 +11,7 @@ mh.PrintMatrix(matrix);
 Console.WriteLine("\nHorizontal snake traversal:");
 Console.WriteLine(lineDelimiter);
 mh.TraverseHorizontalSnake(matrix);
+
+Console.WriteLine("\nVertical snake traversal:");
+Console.WriteLine(lineDelimiter);
+mh.TraverseVerticalSnake(matrix);
