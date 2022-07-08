@@ -47,6 +47,7 @@ internal class MatrixHandler
                 }
             }
         }
+        Console.WriteLine();
     }
 
     public void TraverseVerticalSnake(in string[,] matrix)
@@ -68,6 +69,7 @@ internal class MatrixHandler
                 }
             }
         }
+        Console.WriteLine();
     }
 
     public void PrintMatrix(in string[,] matrix)
