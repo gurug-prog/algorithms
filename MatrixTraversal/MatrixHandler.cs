@@ -18,11 +18,11 @@ internal class MatrixHandler
                 var numElement = i * size + j;
                 if (numElement < 10)
                 {
-                    matrix[i, j] = $"0{numElement.ToString()}";
+                    matrix[i, j] = $"0{numElement}";
                 }
                 else
                 {
-                    matrix[i, j] = $"{numElement.ToString()}";
+                    matrix[i, j] = $"{numElement}";
                 }
             }
         }
