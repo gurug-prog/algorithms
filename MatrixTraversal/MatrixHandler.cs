@@ -28,7 +28,7 @@ internal class MatrixHandler
         return matrix;
     }
 
-    public void PrintMatrix(ref string[,] matrix)
+    public void PrintMatrix(in string[,] matrix)
     {
         for (int n = 0; n < matrix.GetLength(0); n++)
         {
