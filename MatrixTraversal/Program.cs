@@ -15,3 +15,7 @@ mh.TraverseHorizontalSnake(matrix);
 Console.WriteLine("\nVertical snake traversal:");
 Console.WriteLine(lineDelimiter);
 mh.TraverseVerticalSnake(matrix);
+
+Console.WriteLine("\nZigzag traversal:");
+Console.WriteLine(lineDelimiter);
+mh.TraverseZigzag(matrix);
